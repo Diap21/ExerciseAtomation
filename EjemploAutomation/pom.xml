@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>EjemploAutomation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Ejemplo Automation 1</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium.version>4.11.0</selenium.version>
+        <serenity.version>3.9.8</serenity.version>
+        <serenity.cucumber.version>3.9.8</serenity.cucumber.version>
+        <cucumber.version>7.13.0</cucumber.version>
+        <encoding>UTF-8</encoding>
+        <parallel.tests>1</parallel.tests>
+       <maven.compiler.source>11</maven.compiler.source>
+       <maven.compiler.target>11</maven.compiler.target>
+     <tags></tags>
+     <parallel.tests>4</parallel.tests>
+     <skipTests>false</skipTests>
+     <webdriver.base.url></webdriver.base.url>
+    </properties>
+<dependencies>
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version> <!-- Actualiza a la versión más reciente -->
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.assertj</groupId>
+    <artifactId>assertj-core</artifactId>
+    <version>3.24.2</version> <!-- Actualiza a la versión más reciente -->
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-core</artifactId>
+    <version>${serenity.version}</version>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-junit</artifactId>
+    <version>${serenity.version}</version>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-screenplay</artifactId>
+    <version>${serenity.version}</version>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-screenplay-webdriver</artifactId>
+    <version>${serenity.version}</version>
+</dependency>
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-firefox-driver</artifactId>
+    <version>${selenium.version}</version>
+</dependency>
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-remote-driver</artifactId>
+    <version>${selenium.version}</version>
+</dependency>
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>${selenium.version}</version>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-cucumber</artifactId>
+    <version>3.9.8</version>
+</dependency>
+<dependency>
+    <groupId>net.serenity-bdd</groupId>
+    <artifactId>serenity-single-page-report</artifactId>
+    <version>${serenity.version}</version>
+</dependency>
+<dependency>
+    <groupId>com.github.virtuald</groupId>
+    <artifactId>curvesapi</artifactId>
+    <version>1.07</version> <!-- Actualiza a la versión más reciente -->
+</dependency>
+<dependency>
+    <groupId>org.apache.xmlbeans</groupId>
+    <artifactId>xmlbeans</artifactId>
+    <version>5.0.3</version> <!-- Utiliza la versión más reciente disponible -->
+</dependency>
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.15</version> <!-- Actualizado a la versión 1.15 -->
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-collections4</artifactId>
+    <version>4.4</version> <!-- No hay actualización disponible, versión actual mantenida -->
+</dependency>
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version> <!-- Actualizado a la versión 2.11.0 -->
+</dependency>
+</dependencies>
+<build>
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version> <!-- Actualizado a la versión 3.0.0-M5 -->
+        <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+            <skipTests>${skipTests}</skipTests>
+        </configuration>
+    </plugin>
+    <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>3.0.0-M5</version> <!- Actualizado a la versión 3.0.0-M5 -->
+    <!--<configuration>
+        <includes>
+            <include>**/*Runner.java</include>
+        </includes>
+        <systemPropertyVariables>
+            <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+        </systemPropertyVariables>
+        <parallel>classes</parallel>
+        <threadCount>${parallel.tests}</threadCount>
+        <forkCount>${parallel.tests}</forkCount>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>-->
+    <plugin>
+        <groupId>net.serenity-bdd.maven.plugins</groupId>
+        <artifactId>serenity-maven-plugin</artifactId>
+        <version>${serenity.version}</version>
+        <dependencies>
+            <dependency>
+                <groupId>net.serenity-bdd</groupId>
+                <artifactId>serenity-single-page-report</artifactId>
+                <version>${serenity.version}</version>
+            </dependency>
+        </dependencies>
+        <configuration>
+            <reports>single-page-html</reports>
+        </configuration>
+        <executions>
+            <execution>
+                <id>serenity-reports</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                    <goal>aggregate</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
+</build>
+
+</project>
